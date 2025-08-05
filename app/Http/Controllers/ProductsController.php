@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreService;
+use App\Http\Requests\UpdateService;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,9 @@ class ProductsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Products::findOrFail($id);
+
+        return response()->json($product);
     }
 
     /**
@@ -64,9 +67,31 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateService $request, $id)
     {
-        //
+        $product = Products::findOrFail($id);
+
+        var_dump($request->all());
+
+        $product->name = $request->name ?? $product->name;
+        $product->description = $request->description ?? $product->description;
+        $product->price = $request->price ?? $product->price;
+        $product->available = $request->available ?? $product->available;
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file')->store('products', 'public');
+
+            $oldImage = $product->path;
+            unlink(storage_path('storage/app/public/' . $oldImage));
+
+            $product->path = $file;
+        }
+
+        $product->save();
+
+        return response()->json([
+            'message' => $product->name . ' atualizado com sucesso',
+        ]);
     }
 
     /**
