@@ -20,7 +20,7 @@ class AuthenticatedSessionController extends Controller
         ]);
 
         if (!Auth::attempt($credentials)) {
-            return response()->json(['message' => $credentials], 401);
+            return response()->json(['message' => 'E-mail ou senha inválido'], 401);
         }
 
         /** @var \App\Models\User */
