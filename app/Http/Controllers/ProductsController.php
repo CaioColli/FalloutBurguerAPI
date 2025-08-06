@@ -71,8 +71,6 @@ class ProductsController extends Controller
     {
         $product = Products::findOrFail($id);
 
-        var_dump($request->all());
-
         $product->name = $request->name ?? $product->name;
         $product->description = $request->description ?? $product->description;
         $product->price = $request->price ?? $product->price;
@@ -82,7 +80,7 @@ class ProductsController extends Controller
             $file = $request->file('file')->store('products', 'public');
 
             $oldImage = $product->path;
-            unlink(storage_path('storage/app/public/' . $oldImage));
+            unlink(public_path('storage/' . $oldImage));
 
             $product->path = $file;
         }
