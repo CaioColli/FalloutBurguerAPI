@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreService;
 use App\Http\Requests\UpdateService;
 use App\Models\Products;
-use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
@@ -15,7 +14,15 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        
+        $products = Products::all();
+
+        if ($products->isEmpty()) {
+            return Response()->json([
+                'messages' => 'Nenhum produto cadastrado'
+            ])->setStatusCode(404);
+        }
+
+        return Response()->json($products);
     }
 
     /**
@@ -43,7 +50,7 @@ class ProductsController extends Controller
 
         return response()->json([
             'message' => $request->name . ' cadastrado com sucesso',
-        ]);
+        ])->setStatusCode(201);
     }
 
     /**
@@ -51,7 +58,13 @@ class ProductsController extends Controller
      */
     public function show(string $id)
     {
-        $product = Products::findOrFail($id);
+        $product = Products::find($id);
+
+        if (!$product) {
+            return response()->json([
+                'message' => 'Não há nenhum produto com ID ' . $id
+            ])->setStatusCode(404);
+        }
 
         return response()->json($product);
     }
@@ -69,7 +82,13 @@ class ProductsController extends Controller
      */
     public function update(UpdateService $request, $id)
     {
-        $product = Products::findOrFail($id);
+        $product = Products::find($id);
+
+        if (!$product) {
+            return Response()->json([
+                'message' => 'Não há nenhum produto com ID ' . $id
+            ])->setStatusCode(404);
+        }
 
         $product->name = $request->name ?? $product->name;
         $product->description = $request->description ?? $product->description;
@@ -97,7 +116,13 @@ class ProductsController extends Controller
      */
     public function destroy(string $id)
     {
-        $product = Products::findOrFail($id);
+        $product = Products::find($id);
+
+        if (!$product) {
+            return Response()->json([
+                'message' => 'Não há nenhum produto com ID ' . $id
+            ])->setStatusCode(404);
+        }
 
         $oldImage = $product->path;
         unlink(public_path('storage/' . $oldImage));
