@@ -88,7 +88,7 @@ class ProductsController extends Controller
         $product->save();
 
         return response()->json([
-            'message' => $product->name . ' atualizado com sucesso',
+            'message' => $product->name . ' atualizado',
         ]);
     }
 
@@ -97,6 +97,15 @@ class ProductsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Products::findOrFail($id);
+
+        $oldImage = $product->path;
+        unlink(public_path('storage/' . $oldImage));
+
+        $product->delete();
+
+        return response()->json([
+            'message' => $product->name . ' removido do cardápio',
+        ]);
     }
 }

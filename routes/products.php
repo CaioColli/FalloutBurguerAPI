@@ -10,4 +10,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/products/{id}', [ProductsController::class, 'show']);
 
     Route::post('/products/{id}/update', [ProductsController::class, 'update']);
+
+    Route::delete('/products/{id}/delete', [ProductsController::class, 'destroy']);
 });
