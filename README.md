@@ -86,6 +86,11 @@ php artisan serve
 | `/api/auth/logout` | `post` | Logout do usuário | **Token necessário** |
 | `/api/auth/forgot-password` | `post` | Requisita mudança de senha | `null` |
 | `/api/auth/reset-password` | `post` | Redefine senha do usuário | `null` |
+| `/api/products` | `get` | Exibe produtos cadastrados | **Token necessário** |
+| `/api/products` | `post` | Cria um novo produto | **Token necessário** |
+| `/api/products/{id}` | `get` | Exibe produto | **Token necessário** |
+| `/api/products/{id}/update` | `get` | Edita produto | **Token necessário** |
+| `/api/products/{id}/delete` | `delete` | Deleta produto | **Token necessário** |
 
 
 
