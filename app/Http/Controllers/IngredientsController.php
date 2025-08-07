@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateIngredients;
 use App\Models\Ingredients;
 use App\Models\Products;
+use App\Models\Stock;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
 class IngredientsController extends Controller
@@ -52,9 +55,33 @@ class IngredientsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateIngredients $request, string $id)
     {
-        //
+        $ingredient = Ingredients::find($id);
+        
+        $ingredient->ingredient_id = $request->ingredient_id ?? $ingredient->ingredient_id;
+        $ingredient->save();
+
+        $availableIgredient = Stock::find($request->ingredient_id)->available;
+        $nameIngredient = Stock::find($request->ingredient_id)->name;
+
+        $nameProduct = Products::find($ingredient->product_id)->name;
+
+        if (!$availableIgredient) {
+            $product = Products::find($ingredient->product_id);
+            $product->available = false;
+            $product->save();
+
+            return Response()->json([
+                'message' => 'O ingrediente ' . $nameIngredient . ' está em falta no estoque, o produto ' . $nameProduct . ' foi desativado'
+            ])->setStatusCode(200);
+        }
+
+
+
+        return Response()->json([
+            'message' => 'Ingrediente atualizado com sucesso',
+        ])->setStatusCode(200);
     }
 
     /**
