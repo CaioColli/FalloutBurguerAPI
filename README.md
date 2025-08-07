@@ -69,7 +69,7 @@ php artisan serve
 
 ## Documentação da API
 
-#### Cabeçalho da requisição
+#### Cabeçalho das requisições
 
 | Parâmetro   | Tipo       | Valor | Descrição                           |
 | :---------- | :--------- | ------ |:---------------------------------- |
