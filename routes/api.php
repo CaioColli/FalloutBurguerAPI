@@ -14,4 +14,5 @@ Route::middleware('check.api.key')->group(function () {
     
     require base_path('routes/products.php');
     require base_path('routes/stock.php');
+    require base_path('routes/ingredients.php');
 });
