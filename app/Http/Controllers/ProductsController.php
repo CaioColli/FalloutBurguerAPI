@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreService;
 use App\Http\Requests\UpdateService;
+use App\Models\Ingredients;
 use App\Models\Products;
 
 class ProductsController extends Controller
@@ -40,13 +41,27 @@ class ProductsController extends Controller
     {
         $file = $request->file('file')->store('products', 'public');
 
-        Products::create([
+        $newProduct = Products::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'available' => $request->available,
+            'available' => false,
             'path' => $file
         ]);
+
+        foreach ($request->ingredient_id as $ingredient) {
+            Ingredients::create([
+                'product_id' => $newProduct->id,
+                'ingredient_id' => $ingredient
+            ]);
+        }
+
+        $hasIngredients = Ingredients::where('product_id', $newProduct->id)->first();
+
+        if ($hasIngredients) {
+            $newProduct->available = true;
+            $newProduct->save();
+        }
 
         return response()->json([
             'message' => $request->name . ' cadastrado com sucesso',

@@ -24,9 +24,12 @@ class StoreService extends FormRequest
         return [
             'name' => 'required|string',
             'description' => 'required|string',
-            'price'=> 'required|numeric',
-            'available' => 'required|boolean',
+            'price' => 'required|numeric',
+            'available' => 'nullable|boolean',
             'file' => 'required|image|mimes:png,jpeg,jpg,svg|max:2048',
+            
+            'ingredient_id' => 'required|array',
+            'ingredient_id.*' => 'integer|exists:stock,id', // Regra de validação para cada valor que vem do array
         ];
     }
 }
