@@ -10,7 +10,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
    Route::get('/stock/{id}', [StockController::class, 'show']);
 
-   Route::post('/stock/{id}', [StockController::class, 'update']);
+   Route::post('/stock/{id}/update', [StockController::class, 'update']);
 
-   Route::delete('/stock/{id}', [StockController::class, 'destroy']);
+   Route::delete('/stock/{id}/delete', [StockController::class, 'destroy']);
 });

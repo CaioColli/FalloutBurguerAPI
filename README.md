@@ -91,6 +91,11 @@ php artisan serve
 | `/api/products/{id}` | `get` | Exibe produto | **Token necessário** |
 | `/api/products/{id}/update` | `get` | Edita produto | **Token necessário** |
 | `/api/products/{id}/delete` | `delete` | Deleta produto | **Token necessário** |
+| `/api/stock/` | `get` | Exibe itens do estoque cadastrado | **Token necessário** |
+| `/api/stock/` | `post` | Cria um novo item no estoque | **Token necessário** |
+| `/api/stock/{id}` | `get` | Exibe item do estoque | **Token necessário** |
+| `/api/stock/{id}/update` | `post` | Edita item do estoque | **Token necessário** |
+| `/api/stock/{id}/delete` | `delete` | Deleta item do estoque | **Token necessário** |
 
 
 
