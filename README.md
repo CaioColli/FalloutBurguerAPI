@@ -83,19 +83,19 @@ php artisan serve
 | :---------- | :--------- | :--------------------- | :-- |
 | `/api/auth/register`   | `post` | Cadastro de novo usuário | `null` |
 | `/api/auth/login` |`post`| Login de usuário | `null` |
-| `/api/auth/logout` | `post` | Logout do usuário | **Token necessário** |
+| `/api/auth/logout` | `post` | Logout do usuário | **Token de autenticação necessário** |
 | `/api/auth/forgot-password` | `post` | Requisita mudança de senha | `null` |
 | `/api/auth/reset-password` | `post` | Redefine senha do usuário | `null` |
-| `/api/products` | `get` | Exibe produtos cadastrados | **Token necessário** |
-| `/api/products` | `post` | Cria um novo produto | **Token necessário** |
-| `/api/products/{id}` | `get` | Exibe produto | **Token necessário** |
-| `/api/products/{id}/update` | `get` | Edita produto | **Token necessário** |
-| `/api/products/{id}/delete` | `delete` | Deleta produto | **Token necessário** |
-| `/api/stock/` | `get` | Exibe itens do estoque cadastrado | **Token necessário** |
-| `/api/stock/` | `post` | Cria um novo item no estoque | **Token necessário** |
-| `/api/stock/{id}` | `get` | Exibe item do estoque | **Token necessário** |
-| `/api/stock/{id}/update` | `post` | Edita item do estoque | **Token necessário** |
-| `/api/stock/{id}/delete` | `delete` | Deleta item do estoque | **Token necessário** |
+| `/api/products` | `get` | Exibe produtos cadastrados | **Token de autenticação necessário** |
+| `/api/products` | `post` | Cria um novo produto | **Token de autenticação necessário** |
+| `/api/products/{id}` | `get` | Exibe produto | **Token de autenticação necessário** |
+| `/api/products/{id}/update` | `get` | Edita produto | **Token de autenticação necessário** |
+| `/api/products/{id}/delete` | `delete` | Deleta produto | **Token de autenticação necessário** |
+| `/api/stock/` | `get` | Exibe itens do estoque cadastrado | **Token de autenticação necessário** |
+| `/api/stock/` | `post` | Cria um novo item no estoque | **Token de autenticação necessário** |
+| `/api/stock/{id}` | `get` | Exibe item do estoque | **Token de autenticação necessário** |
+| `/api/stock/{id}/update` | `post` | Edita item do estoque | **Token de autenticação necessário** |
+| `/api/stock/{id}/delete` | `delete` | Deleta item do estoque | **Token de autenticação necessário** |
 
 
 
