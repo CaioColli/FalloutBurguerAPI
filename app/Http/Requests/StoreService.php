@@ -28,7 +28,7 @@ class StoreService extends FormRequest
             'available' => 'nullable|boolean',
             'file' => 'required|image|mimes:png,jpeg,jpg,svg|max:2048',
             
-            'ingredient_id' => 'required|array',
+            'ingredient_id' => 'nullable|array',
             'ingredient_id.*' => 'integer|exists:stock,id', // Regra de validação para cada valor que vem do array
         ];
     }

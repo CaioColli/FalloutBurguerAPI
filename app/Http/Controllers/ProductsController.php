@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreService;
 use App\Http\Requests\UpdateService;
@@ -39,33 +41,43 @@ class ProductsController extends Controller
      */
     public function store(StoreService $request)
     {
-        $file = $request->file('file')->store('products', 'public');
+        DB::beginTransaction();
 
-        $newProduct = Products::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'price' => $request->price,
-            'available' => false,
-            'path' => $file
-        ]);
+        try {
+            $file = $request->file('file')->store('products', 'public');
 
-        foreach ($request->ingredient_id as $ingredient) {
-            Ingredients::create([
-                'product_id' => $newProduct->id,
-                'ingredient_id' => $ingredient
+            $newProduct = Products::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'price' => $request->price,
+                'available' => true,
+                'path' => $file
             ]);
+
+            
+            if ($request->has('ingredient_id')) {
+                $ingredientsID = array_unique($request->ingredient_id);
+                
+                foreach ($ingredientsID as $ingredient) {
+                    Ingredients::create([
+                        'product_id' => $newProduct->id,
+                        'ingredient_id' => $ingredient
+                    ]);
+                }
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'message' => $request->name . ' cadastrado com sucesso',
+            ])->setStatusCode(201);
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return Response()->json([
+                'message' => 'Houve um erro no sistema ao tentar cadastrar o produto'
+            ])->setStatusCode(500);
         }
-
-        $hasIngredients = Ingredients::where('product_id', $newProduct->id)->first();
-
-        if ($hasIngredients) {
-            $newProduct->available = true;
-            $newProduct->save();
-        }
-
-        return response()->json([
-            'message' => $request->name . ' cadastrado com sucesso',
-        ])->setStatusCode(201);
     }
 
     /**
