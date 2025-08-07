@@ -9,6 +9,7 @@ use App\Http\Requests\StoreService;
 use App\Http\Requests\UpdateService;
 use App\Models\Ingredients;
 use App\Models\Products;
+use App\Models\Stock;
 
 class ProductsController extends Controller
 {
@@ -57,16 +58,31 @@ class ProductsController extends Controller
             
             if ($request->has('ingredient_id')) {
                 $ingredientsID = array_unique($request->ingredient_id);
-                
+
                 foreach ($ingredientsID as $ingredient) {
                     Ingredients::create([
                         'product_id' => $newProduct->id,
                         'ingredient_id' => $ingredient
                     ]);
+
+                    DB::commit();
+
+                    $selectedIngredient = Stock::find($ingredient);
+
+                    $ingredientName = $selectedIngredient->name;
+                    $ingredientAvailable = $selectedIngredient->available;
+                    
+                    if ($ingredientAvailable === false) {
+                        $newProduct->available = false;
+                        $newProduct->save();
+
+                        return Response()->json([
+                            'message' => $request->name . ' Criado com sucesso, mas o ingrediente ' . $ingredientName . ' está em falta no estoque'
+                        ]);
+
+                    }
                 }
             }
-
-            DB::commit();
 
             return response()->json([
                 'message' => $request->name . ' cadastrado com sucesso',
