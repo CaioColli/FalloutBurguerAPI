@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreService;
-use App\Http\Requests\UpdateService;
-use App\Models\Ingredients;
-use App\Models\Products;
-use App\Models\Stock;
+use App\Http\Requests\StoreDrinks;
+use App\Http\Requests\UpdateDrink;
+use App\Models\Drinks;
+use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class DrinksController extends Controller
 {
     private function validateProduct($id)
     {
@@ -24,15 +23,15 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
+        $drinks = Drinks::all();
 
-        if ($products->isEmpty()) {
+        if ($drinks->isEmpty()) {
             return Response()->json([
                 'messages' => 'Nenhum produto cadastrado'
             ])->setStatusCode(404);
         }
 
-        return Response()->json($products);
+        return Drinks::all();
     }
 
     /**
@@ -46,45 +45,20 @@ class ProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreService $request)
+    public function store(StoreDrinks $request)
     {
         DB::beginTransaction();
 
         try {
             $file = $request->file('file')->store('products', 'public');
 
-            $newProduct = Products::create([
+            Drinks::create([
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->price,
                 'available' => true,
                 'path' => $file
             ]);
-
-            $ingredientsID = array_unique($request->ingredient_id);
-
-            foreach ($ingredientsID as $ingredient) {
-                Ingredients::create([
-                    'product_id' => $newProduct->id,
-                    'ingredient_id' => $ingredient
-                ]);
-
-                DB::commit();
-
-                $selectedIngredient = Stock::find($ingredient);
-
-                $ingredientName = $selectedIngredient->name;
-                $ingredientAvailable = $selectedIngredient->available;
-
-                if ($ingredientAvailable === false) {
-                    $newProduct->available = false;
-                    $newProduct->save();
-
-                    return Response()->json([
-                        'message' => $request->name . ' Criado com sucesso, mas o ingrediente ' . $ingredientName . ' está em falta no estoque'
-                    ]);
-                }
-            }
 
             DB::commit();
 
@@ -105,13 +79,13 @@ class ProductsController extends Controller
      */
     public function show(string $id)
     {
-        $product = Products::find($id);
+        $drink = Drinks::find($id);
 
-        if (!$product) {
+        if (!$drink) {
             $this->validateProduct($id);
         }
 
-        return response()->json($product);
+        return Response()->json($drink)->setStatusCode(200);
     }
 
     /**
@@ -119,43 +93,47 @@ class ProductsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $drink = Drinks::find($id);
+
+        if (!$drink) {
+            return $this->validateProduct($id);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateService $request, $id)
+    public function update(UpdateDrink $request, string $id)
     {
         DB::beginTransaction();
 
         try {
-            $product = Products::find($id);
+            $drink = Drinks::find($id);
 
-            if (!$product) {
+            if (!$drink) {
                 $this->validateProduct($id);
             }
 
-            $product->name = $request->name ?? $product->name;
-            $product->description = $request->description ?? $product->description;
-            $product->price = $request->price ?? $product->price;
-            $product->available = $request->available ?? $product->available;
+            $drink->name = $request->name ?? $drink->name;
+            $drink->description = $request->description ?? $drink->description;
+            $drink->price = $request->price ?? $drink->price;
+            $drink->available = $request->available ?? $drink->available;
 
             if ($request->hasFile('file')) {
                 $file = $request->file('file')->store('products', 'public');
 
-                $oldImage = $product->path;
+                $oldImage = $drink->path;
                 unlink(public_path('storage/' . $oldImage));
 
-                $product->path = $file;
+                $drink->path = $file;
             }
 
-            $product->save();
+            $drink->save();
 
             DB::commit();
 
             return response()->json([
-                'message' => $product->name . ' atualizado',
+                'message' => $drink->name . ' atualizado',
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
@@ -175,21 +153,21 @@ class ProductsController extends Controller
         DB::beginTransaction();
 
         try {
-            $product = Products::find($id);
+            $drink = Drinks::find($id);
 
-            if (!$product) {
+            if (!$drink) {
                 $this->validateProduct($id);
             }
 
-            $oldImage = $product->path;
+            $oldImage = $drink->path;
             unlink(public_path('storage/' . $oldImage));
 
-            $product->delete();
+            $drink->delete();
 
             DB::commit();
 
             return response()->json([
-                'message' => $product->name . ' removido do cardápio',
+                'message' => $drink->name . ' removido do cardápio',
             ]);
         } catch (\Exception $e) {
             DB::rollBack();

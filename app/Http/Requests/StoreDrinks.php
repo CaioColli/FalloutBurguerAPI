@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreService extends FormRequest
+class StoreDrinks extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,7 @@ class StoreService extends FormRequest
             'description' => 'required|string',
             'price' => 'required|numeric',
             'available' => 'nullable|boolean',
-            'file' => 'required|image|mimes:png,jpeg,jpg,svg|max:2048',
-            
-            'ingredient_id' => 'required|array',
-            'ingredient_id.*' => 'integer|exists:stock,id', // Regra de validação para cada valor que vem do array
+            'file' => 'required|image|mimes:png,jpeg,jpg,svg|max:2048'
         ];
     }
 }
