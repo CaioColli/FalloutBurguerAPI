@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateIngredients;
 use App\Models\Ingredients;
 use App\Models\Products;
 use App\Models\Stock;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
 class IngredientsController extends Controller
@@ -44,7 +45,7 @@ class IngredientsController extends Controller
         $ingredients = Ingredients::where('product_id', $id)->get();
 
         $ingredientsIds = $ingredients->pluck('ingredient_id');
-        
+
         $ingredientsNames = Stock::whereIn('id', $ingredientsIds)->select('name', 'available')->get();
 
         return Response()->json($ingredientsNames)->setStatusCode(200);
@@ -63,29 +64,40 @@ class IngredientsController extends Controller
      */
     public function update(UpdateIngredients $request, string $id)
     {
-        $ingredient = Ingredients::find($id);
-        
-        $ingredient->ingredient_id = $request->ingredient_id ?? $ingredient->ingredient_id;
-        $ingredient->save();
+        DB::beginTransaction();
 
-        $availableIgredient = Stock::find($request->ingredient_id)->available;
-        $nameIngredient = Stock::find($request->ingredient_id)->name;
+        try {
+            $ingredient = Ingredients::find($id);
 
-        $nameProduct = Products::find($ingredient->product_id)->name;
+            $ingredient->ingredient_id = $request->ingredient_id ?? $ingredient->ingredient_id;
+            $ingredient->save();
 
-        if (!$availableIgredient) {
-            $product = Products::find($ingredient->product_id);
-            $product->available = false;
-            $product->save();
+            $availableIgredient = Stock::find($request->ingredient_id)->available;
+            $nameIngredient = Stock::find($request->ingredient_id)->name;
+
+            $nameProduct = Products::find($ingredient->product_id)->name;
+
+            if (!$availableIgredient) {
+                $product = Products::find($ingredient->product_id);
+                $product->available = false;
+                $product->save();
+
+                return Response()->json([
+                    'message' => 'O ingrediente ' . $nameIngredient . ' está em falta no estoque, o produto ' . $nameProduct . ' foi desativado'
+                ])->setStatusCode(200);
+            }
 
             return Response()->json([
-                'message' => 'O ingrediente ' . $nameIngredient . ' está em falta no estoque, o produto ' . $nameProduct . ' foi desativado'
+                'message' => 'Ingrediente atualizado com sucesso',
             ])->setStatusCode(200);
-        }
+            
+        } catch (\Exception $e) {
+            DB::rollBack();
 
-        return Response()->json([
-            'message' => 'Ingrediente atualizado com sucesso',
-        ])->setStatusCode(200);
+            return Response()->json([
+                'message' => 'Houve um erro no sistema ao tentar editar o ingrediente'
+            ]);
+        }
     }
 
     /**

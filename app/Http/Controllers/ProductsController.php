@@ -55,7 +55,7 @@ class ProductsController extends Controller
                 'path' => $file
             ]);
 
-            
+
             if ($request->has('ingredient_id')) {
                 $ingredientsID = array_unique($request->ingredient_id);
 
@@ -71,7 +71,7 @@ class ProductsController extends Controller
 
                     $ingredientName = $selectedIngredient->name;
                     $ingredientAvailable = $selectedIngredient->available;
-                    
+
                     if ($ingredientAvailable === false) {
                         $newProduct->available = false;
                         $newProduct->save();
@@ -79,7 +79,6 @@ class ProductsController extends Controller
                         return Response()->json([
                             'message' => $request->name . ' Criado com sucesso, mas o ingrediente ' . $ingredientName . ' está em falta no estoque'
                         ]);
-
                     }
                 }
             }
@@ -125,33 +124,45 @@ class ProductsController extends Controller
      */
     public function update(UpdateService $request, $id)
     {
-        $product = Products::find($id);
+        DB::beginTransaction();
 
-        if (!$product) {
+        try {
+            $product = Products::find($id);
+
+            if (!$product) {
+                return Response()->json([
+                    'message' => 'Não há nenhum produto com ID ' . $id
+                ])->setStatusCode(404);
+            }
+
+            $product->name = $request->name ?? $product->name;
+            $product->description = $request->description ?? $product->description;
+            $product->price = $request->price ?? $product->price;
+            $product->available = $request->available ?? $product->available;
+
+            if ($request->hasFile('file')) {
+                $file = $request->file('file')->store('products', 'public');
+
+                $oldImage = $product->path;
+                unlink(public_path('storage/' . $oldImage));
+
+                $product->path = $file;
+            }
+
+            $product->save();
+
+            return response()->json([
+                'message' => $product->name . ' atualizado',
+            ]);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+
             return Response()->json([
-                'message' => 'Não há nenhum produto com ID ' . $id
-            ])->setStatusCode(404);
+                'message' => 'Houve um erro no sistema ao tentar editar o produto'
+            ]);
         }
-
-        $product->name = $request->name ?? $product->name;
-        $product->description = $request->description ?? $product->description;
-        $product->price = $request->price ?? $product->price;
-        $product->available = $request->available ?? $product->available;
-
-        if ($request->hasFile('file')) {
-            $file = $request->file('file')->store('products', 'public');
-
-            $oldImage = $product->path;
-            unlink(public_path('storage/' . $oldImage));
-
-            $product->path = $file;
-        }
-
-        $product->save();
-
-        return response()->json([
-            'message' => $product->name . ' atualizado',
-        ]);
     }
 
     /**
@@ -159,21 +170,33 @@ class ProductsController extends Controller
      */
     public function destroy(string $id)
     {
-        $product = Products::find($id);
+        DB::beginTransaction();
 
-        if (!$product) {
+        try {
+            $product = Products::find($id);
+
+            if (!$product) {
+                return Response()->json([
+                    'message' => 'Não há nenhum produto com ID ' . $id
+                ])->setStatusCode(404);
+            }
+
+            $oldImage = $product->path;
+            unlink(public_path('storage/' . $oldImage));
+
+            $product->delete();
+
+            return response()->json([
+                'message' => $product->name . ' removido do cardápio',
+            ]);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+
             return Response()->json([
-                'message' => 'Não há nenhum produto com ID ' . $id
-            ])->setStatusCode(404);
+                'message' => 'Houve um erro no sistema ao tentar excluir o produto'
+            ]);
         }
-
-        $oldImage = $product->path;
-        unlink(public_path('storage/' . $oldImage));
-
-        $product->delete();
-
-        return response()->json([
-            'message' => $product->name . ' removido do cardápio',
-        ]);
     }
 }
