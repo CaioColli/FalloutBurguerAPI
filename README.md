@@ -73,7 +73,7 @@ php artisan serve
 
 | Parâmetro   | Tipo       | Valor | Descrição                           |
 | :---------- | :--------- | ------ |:---------------------------------- |
-| `x-api-key` | `string` | `Token` |**Obrigatório**. A chave da sua API |
+| `x-api-key` | `string` | `Token` |**Obrigatório**. A chave da API |
 | `Accept` | `string` | `application/json` |**Obrigatório**. Identifica formato dos dados.|
 | `Authorization` | `string` | `Token` |**Obrigatório em rotas autenticadas**.|
 
