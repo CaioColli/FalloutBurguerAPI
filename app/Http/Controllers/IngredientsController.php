@@ -77,8 +77,6 @@ class IngredientsController extends Controller
             ])->setStatusCode(200);
         }
 
-
-
         return Response()->json([
             'message' => 'Ingrediente atualizado com sucesso',
         ])->setStatusCode(200);
@@ -89,6 +87,15 @@ class IngredientsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ingredient = Ingredients::find($id);
+
+        $nameProduct = Products::find($ingredient->product_id)->name;
+        $ingredientName = Stock::find($ingredient->ingredient_id)->name;
+
+        $ingredient->delete();
+
+        return Response()->json([
+            'message' => $ingredientName . ' removido com sucesso do produto ' . $nameProduct,
+        ])->setStatusCode(200);
     }
 }
