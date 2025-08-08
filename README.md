@@ -96,6 +96,9 @@ php artisan serve
 | `/api/stock/{id}` | `get` | Exibe item do estoque | **Token de autenticação necessário** |
 | `/api/stock/{id}/update` | `post` | Edita item do estoque | **Token de autenticação necessário** |
 | `/api/stock/{id}/delete` | `delete` | Deleta item do estoque | **Token de autenticação necessário** |
+| `/api/ingredients/{id}` | `get` | Exibe ingredientes do produto | **Token de autenticação necessário** |
+| `/api/ingredients/{id}/update` | `post` | Edita ingredientes do produto | **Token de autenticação necessário** |
+| `/api/ingredients/{id}/delete` | `delete` | Deleta ingredientes do produto | **Token de autenticação necessário** |
 
 
 
