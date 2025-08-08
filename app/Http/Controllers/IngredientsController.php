@@ -41,7 +41,13 @@ class IngredientsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $ingredients = Ingredients::where('product_id', $id)->get();
+
+        $ingredientsIds = $ingredients->pluck('ingredient_id');
+        
+        $ingredientsNames = Stock::whereIn('id', $ingredientsIds)->select('name', 'available')->get();
+
+        return Response()->json($ingredientsNames)->setStatusCode(200);
     }
 
     /**

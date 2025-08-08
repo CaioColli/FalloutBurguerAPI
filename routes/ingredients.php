@@ -8,5 +8,7 @@ Route::middleware('auth:sanctum')->group(function () {
     
     Route::delete('/ingredients/{id}/delete', [IngredientsController::class, 'destroy']);
 
+    Route::get('/ingredients/{id}', [IngredientsController::class, 'show']);
+
     Route::post('/ingredients/{id}/update', [IngredientsController::class, 'update']);
 });
