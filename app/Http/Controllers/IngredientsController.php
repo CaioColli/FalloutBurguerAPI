@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 
 class IngredientsController extends Controller
 {
+    private function validateIngredient($id) {
+        abort(Response()->json([
+            'message' => 'Não há nenhum produto com ID ' . $id
+        ])->setStatusCode(404));
+    }
     /**
      * Display a listing of the resource.
      */
@@ -42,13 +47,23 @@ class IngredientsController extends Controller
      */
     public function show(string $id)
     {
-        $ingredients = Ingredients::where('product_id', $id)->get();
+        $ingredient = Products::find($id);
 
-        $ingredientsIds = $ingredients->pluck('ingredient_id');
+        if (!$ingredient) {
+            $this->validateIngredient($id);
+        }
 
-        $ingredientsNames = Stock::whereIn('id', $ingredientsIds)->select('name', 'available')->get();
+        $ingredients = Ingredients::join('stock', 'ingredients.ingredient_id', '=', 'stock.id')
+            ->where('product_id', $id)
+            ->select(
+                'ingredients.id',
+                'ingredients.product_id',
+                'stock.name',
+                'stock.available'
+            )
+            ->get();
 
-        return Response()->json($ingredientsNames)->setStatusCode(200);
+        return Response()->json($ingredients)->setStatusCode(200);
     }
 
     /**
@@ -82,6 +97,8 @@ class IngredientsController extends Controller
                 $product->available = false;
                 $product->save();
 
+                DB::commit();
+
                 return Response()->json([
                     'message' => 'O ingrediente ' . $nameIngredient . ' está em falta no estoque, o produto ' . $nameProduct . ' foi desativado'
                 ])->setStatusCode(200);
@@ -90,7 +107,6 @@ class IngredientsController extends Controller
             return Response()->json([
                 'message' => 'Ingrediente atualizado com sucesso',
             ])->setStatusCode(200);
-            
         } catch (\Exception $e) {
             DB::rollBack();
 
@@ -106,6 +122,10 @@ class IngredientsController extends Controller
     public function destroy(string $id)
     {
         $ingredient = Ingredients::find($id);
+
+        if (!$ingredient) {
+            $this->validateIngredient($id);
+        }
 
         $nameProduct = Products::find($ingredient->product_id)->name;
         $ingredientName = Stock::find($ingredient->ingredient_id)->name;

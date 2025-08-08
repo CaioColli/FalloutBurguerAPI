@@ -13,6 +13,12 @@ use App\Models\Stock;
 
 class ProductsController extends Controller
 {
+    private function validateProduct($id)
+    {
+        abort(Response()->json([
+            'message' => 'Não há nenhum produto com ID ' . $id
+        ])->setStatusCode(404));
+    }
     /**
      * Display a listing of the resource.
      */
@@ -83,6 +89,8 @@ class ProductsController extends Controller
                 }
             }
 
+            DB::commit();
+
             return response()->json([
                 'message' => $request->name . ' cadastrado com sucesso',
             ])->setStatusCode(201);
@@ -103,9 +111,7 @@ class ProductsController extends Controller
         $product = Products::find($id);
 
         if (!$product) {
-            return response()->json([
-                'message' => 'Não há nenhum produto com ID ' . $id
-            ])->setStatusCode(404);
+            $this->validateProduct($id);
         }
 
         return response()->json($product);
@@ -130,9 +136,7 @@ class ProductsController extends Controller
             $product = Products::find($id);
 
             if (!$product) {
-                return Response()->json([
-                    'message' => 'Não há nenhum produto com ID ' . $id
-                ])->setStatusCode(404);
+                $this->validateProduct($id);
             }
 
             $product->name = $request->name ?? $product->name;
@@ -151,17 +155,18 @@ class ProductsController extends Controller
 
             $product->save();
 
+            DB::commit();
+
             return response()->json([
                 'message' => $product->name . ' atualizado',
             ]);
-
-            DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
 
             return Response()->json([
                 'message' => 'Houve um erro no sistema ao tentar editar o produto'
-            ]);
+
+            ])->setStatusCode(500);
         }
     }
 
@@ -176,9 +181,7 @@ class ProductsController extends Controller
             $product = Products::find($id);
 
             if (!$product) {
-                return Response()->json([
-                    'message' => 'Não há nenhum produto com ID ' . $id
-                ])->setStatusCode(404);
+                $this->validateProduct($id);
             }
 
             $oldImage = $product->path;
@@ -186,17 +189,17 @@ class ProductsController extends Controller
 
             $product->delete();
 
+            DB::commit();
+
             return response()->json([
                 'message' => $product->name . ' removido do cardápio',
             ]);
-
-            DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
 
             return Response()->json([
                 'message' => 'Houve um erro no sistema ao tentar excluir o produto'
-            ]);
+            ])->setStatusCode(500);
         }
     }
 }

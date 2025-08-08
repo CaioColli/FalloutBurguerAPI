@@ -9,6 +9,13 @@ use App\Models\Stock;
 
 class StockController extends Controller
 {
+    private function validateStock($id)
+    {
+        abort(Response()->json([
+            'message' => 'Não há nenhum item no estoque com ID ' . $id
+        ])->setStatusCode(404));
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -55,6 +62,10 @@ class StockController extends Controller
     {
         $item = Stock::find($id);
 
+        if (!$item) {
+            $this->validateStock($id);
+        }
+
         return Response()->json($item)->setStatusCode(200);
     }
 
@@ -73,6 +84,10 @@ class StockController extends Controller
     {
         $item = Stock::find($id);
 
+        if (!$item) {
+            $this->validateStock($id);
+        }
+
         $item->name = $request->name ?? $item->name;
         $item->available = $request->available ?? $item->available;
 
@@ -90,10 +105,14 @@ class StockController extends Controller
     {
         $item = Stock::find($id);
 
+        if (!$item) {
+            return Response()->json([
+                'message' => 'Não há nenhum item no estoque com ID ' . $id
+            ])->setStatusCode(404);
+        }
+
         $item->delete();
 
-        return Response()->json([
-            'message' => $item->name . ' removido com sucesso',
-        ])->setStatusCode(200);    
+        $this->validateStock($id);
     }
 }
