@@ -1,0 +1,3812 @@
+{
+  "apidogProject": "1.0.0",
+  "$schema": {
+    "app": "apidog",
+    "type": "project",
+    "version": "1.2.0"
+  },
+  "info": {
+    "name": "FalloutBurguer",
+    "description": "",
+    "mockRule": {
+      "rules": [],
+      "enableSystemRule": true
+    }
+  },
+  "apiCollection": [
+    {
+      "name": "Root",
+      "id": 4545750,
+      "auth": {},
+      "securityScheme": {},
+      "parentId": 0,
+      "serverId": "",
+      "description": "",
+      "identityPattern": {
+        "httpApi": {
+          "type": "methodAndPath",
+          "bodyType": "",
+          "fields": []
+        }
+      },
+      "shareSettings": {},
+      "visibility": "SHARED",
+      "moduleId": 844489,
+      "preProcessors": [
+        {
+          "id": "inheritProcessors",
+          "type": "inheritProcessors",
+          "data": {}
+        }
+      ],
+      "postProcessors": [
+        {
+          "id": "inheritProcessors",
+          "type": "inheritProcessors",
+          "data": {}
+        }
+      ],
+      "inheritPostProcessors": {},
+      "inheritPreProcessors": {},
+      "items": [
+        {
+          "name": "User",
+          "id": 4545751,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": "",
+              "fields": []
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "moduleId": 844489,
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "Cadaster",
+              "api": {
+                "id": "20041971",
+                "method": "post",
+                "path": "/api/auth/register",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "haBKNdh1Yi",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "0MJD3mRtCO",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28899023",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "Nome do usuário a cadastrar",
+                      "type": "string",
+                      "id": "QKzoJpnAU0",
+                      "example": "NomeUsuário",
+                      "enable": true,
+                      "name": "name",
+                      "schema": {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "examples": [
+                          "Caio"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "E-mail do usuário a cadastrar",
+                      "type": "string",
+                      "id": "dGmca87z74",
+                      "example": "usuario@email.com",
+                      "enable": true,
+                      "name": "email",
+                      "schema": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 255,
+                        "examples": [
+                          "usuario@email.com"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Senha do usuário a cadastrar",
+                      "type": "string",
+                      "id": "gf8mx19ZbO",
+                      "example": "123user!",
+                      "enable": true,
+                      "name": "password",
+                      "schema": {
+                        "type": "string",
+                        "format": "password",
+                        "pattern": "^(?=.*[A-Za-z])(?=.*[^A-Za-z0-9]).{8,}$",
+                        "minLength": 8,
+                        "examples": [
+                          "123user!"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Confirmação de senha do usuário a cadastrar",
+                      "type": "string",
+                      "id": "jpUbAfWIyd",
+                      "example": "123user!",
+                      "enable": true,
+                      "name": "password_confirmation",
+                      "schema": {
+                        "type": "string",
+                        "pattern": "^(?=.*[A-Za-z])(?=.*[^A-Za-z0-9]).{8,}$",
+                        "minLength": 8,
+                        "examples": [
+                          "123user!"
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por fazer cadastro de usuário, para efetuar cadastro é necessário  informar \"name\", \"email\", \"password\" e \"password_confirmation\". Foi definido que a senha devo conter no mínimo 8 caracteres, 1 letra e 1 símbolo.",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 10,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28899023"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Login",
+              "api": {
+                "id": "20041985",
+                "method": "post",
+                "path": "/api/auth/login",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "haBKNdh1Yi",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "0MJD3mRtCO",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28899024",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "E-mail do usuário a efetuar login",
+                      "type": "string",
+                      "id": "dGmca87z74",
+                      "example": "usuario@email.com",
+                      "enable": true,
+                      "name": "email",
+                      "schema": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 255,
+                        "examples": [
+                          "usuario@email.com"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Senha do usuário a efetuar login",
+                      "type": "string",
+                      "id": "gf8mx19ZbO",
+                      "example": "123user!",
+                      "enable": true,
+                      "name": "password",
+                      "schema": {
+                        "type": "string",
+                        "format": "password",
+                        "pattern": "^(?=.*[A-Za-z])(?=.*[^A-Za-z0-9]).{8,}$",
+                        "examples": [
+                          "123user!"
+                        ],
+                        "minLength": 8
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por fazer login de usuário, para efetuar login é necessário  informar \"email\" e \"password\".",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 16,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28899024"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Logout",
+              "api": {
+                "id": "20041993",
+                "method": "post",
+                "path": "/api/auth/logout",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "haBKNdh1Yi",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "0MJD3mRtCO",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "BPH3IcWUqc",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28898610",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por fazer logout de usuário, o logout é feito com base no token de Authorization do usuário autenticado.",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 22,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28898610"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Forgot Password",
+              "api": {
+                "id": "20041996",
+                "method": "post",
+                "path": "/api/auth/login",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "haBKNdh1Yi",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "0MJD3mRtCO",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28899025",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "E-mail do usuário a efetuar troca de senha",
+                      "type": "string",
+                      "id": "dGmca87z74",
+                      "example": "usuario@email.com",
+                      "enable": true,
+                      "name": "email",
+                      "schema": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 255,
+                        "examples": [
+                          "usuario@email.com"
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por fazer o pedido de reset de senha do usuário, para efetuar a mudança de senha é necessário  informar \"email\".",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 19,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28899025"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Reset Password",
+              "api": {
+                "id": "20042010",
+                "method": "post",
+                "path": "/api/auth/register",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "haBKNdh1Yi",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "0MJD3mRtCO",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28898612",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "Token de reset enviado no e-mail do usuário cadastrado",
+                      "type": "string",
+                      "id": "QKzoJpnAU0",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "token",
+                      "schema": {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "examples": [
+                          "Caio"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "E-mail do usuário cadastrado",
+                      "type": "string",
+                      "id": "dGmca87z74",
+                      "example": "usuario@email.com",
+                      "enable": true,
+                      "name": "email",
+                      "schema": {
+                        "type": "string",
+                        "format": "email",
+                        "maxLength": 255,
+                        "examples": [
+                          "usuario@email.com"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Nova senha do usuário cadastrado",
+                      "type": "string",
+                      "id": "gf8mx19ZbO",
+                      "example": "123user!",
+                      "enable": true,
+                      "name": "password",
+                      "schema": {
+                        "type": "string",
+                        "format": "password",
+                        "pattern": "^(?=.*[A-Za-z])(?=.*[^A-Za-z0-9]).{8,}$",
+                        "minLength": 8,
+                        "examples": [
+                          "123user!"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Confirmação de nova senha do usuário cadastrado",
+                      "type": "string",
+                      "id": "jpUbAfWIyd",
+                      "example": "123user!",
+                      "enable": true,
+                      "name": "password_confirmation",
+                      "schema": {
+                        "type": "string",
+                        "pattern": "^(?=.*[A-Za-z])(?=.*[^A-Za-z0-9]).{8,}$",
+                        "minLength": 8,
+                        "examples": [
+                          "123user!"
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por fazer cadastro de usuário, para efetuar cadastro é necessário  informar \"name\", \"email\", \"password\" e \"password_confirmation\". Foi definido que a senha devo conter no mínimo 8 caracteres, 1 letra e 1 símbolo.",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 13,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28898612"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            }
+          ]
+        },
+        {
+          "name": "Products",
+          "id": 4545752,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": "",
+              "fields": []
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "moduleId": 844489,
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "New Product",
+              "api": {
+                "id": "20042110",
+                "method": "post",
+                "path": "/api/products",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28898471",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "Nome do produto a cadastrar",
+                      "type": "string",
+                      "id": "GKBkXAYzBc",
+                      "example": "X-Bacon",
+                      "enable": true,
+                      "name": "name",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "X-Bacon"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Descrição do produto a cadastrar",
+                      "type": "string",
+                      "id": "0jGpqDPETr",
+                      "example": "Com bacon",
+                      "enable": true,
+                      "name": "description",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "Com bacon"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Valor do produto a cadastrar",
+                      "type": "number",
+                      "id": "BzfuZb94BK",
+                      "example": "12.5",
+                      "enable": true,
+                      "name": "price",
+                      "schema": {
+                        "type": "number",
+                        "examples": [
+                          12.5
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Imagem do produto a cadastrar, a imagem pode ter o tamanho máximo de 2mb e os formatos válidos são png, jpeg, jpg e svg",
+                      "type": "file",
+                      "id": "GjJrjhbRRY",
+                      "example": "file://C:\\Users\\Caio_\\OneDrive\\Área de Trabalho\\pato.jpeg",
+                      "enable": true,
+                      "name": "file",
+                      "schema": {
+                        "type": "string",
+                        "format": "binary",
+                        "examples": [
+                          "arquivo.png"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "IDs dos ingredientes cadastrados",
+                      "type": "array",
+                      "id": "MUCyNDWGI2",
+                      "example": [
+                        "1",
+                        "1"
+                      ],
+                      "enable": true,
+                      "name": "ingredient_id",
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por fazer cadastro de novo produto, para efetuar cadastro é necessário informar \"name\", \"description\", \"price\", \"file\" e \"ingredient_id\".",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 10,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28898471"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "New Product Drink",
+              "api": {
+                "id": "20043328",
+                "method": "post",
+                "path": "/api/products/drinks",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28899552",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "Nome da bebida a cadastrar",
+                      "type": "string",
+                      "id": "GKBkXAYzBc",
+                      "example": "Coca Cola",
+                      "enable": true,
+                      "name": "name",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "Coca Cola"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Descrição da bebida a cadastrar",
+                      "type": "string",
+                      "id": "0jGpqDPETr",
+                      "example": "2 litros",
+                      "enable": true,
+                      "name": "description",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "2 litros"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Valor da bebida a cadastrar",
+                      "type": "number",
+                      "id": "BzfuZb94BK",
+                      "example": "10",
+                      "enable": true,
+                      "name": "price",
+                      "schema": {
+                        "type": "number",
+                        "examples": [
+                          12.5
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Imagem da bebida a cadastrar, a imagem pode ter o tamanho máximo de 2mb e os formatos válidos são png, jpeg, jpg e svg",
+                      "type": "file",
+                      "id": "GjJrjhbRRY",
+                      "example": "file://C:\\Users\\Caio_\\OneDrive\\Área de Trabalho\\pato.jpeg",
+                      "enable": true,
+                      "name": "file",
+                      "schema": {
+                        "type": "string",
+                        "format": "binary",
+                        "examples": [
+                          "arquivo.png"
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por fazer cadastro de uma nova bebida, para efetuar cadastro é necessário informar \"name\", \"description\", \"file\".",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 38,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28899552"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Update Product",
+              "api": {
+                "id": "20043331",
+                "method": "post",
+                "path": "/api/products/{id}/update",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28899772",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": false,
+                      "description": "Nome do produto a editar",
+                      "type": "string",
+                      "id": "GKBkXAYzBc",
+                      "example": "X-Bacon",
+                      "enable": true,
+                      "name": "name",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "X-Bacon"
+                        ]
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Descrição do produto a editar",
+                      "type": "string",
+                      "id": "0jGpqDPETr",
+                      "example": "Com bacon",
+                      "enable": true,
+                      "name": "description",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "Com bacon"
+                        ]
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Valor do produto a editar",
+                      "type": "number",
+                      "id": "BzfuZb94BK",
+                      "example": "12.5",
+                      "enable": true,
+                      "name": "price",
+                      "schema": {
+                        "type": "number",
+                        "examples": [
+                          12.5
+                        ]
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Disponibilidade do produto a editar",
+                      "type": "boolean",
+                      "id": "HoRJiq4mzH",
+                      "example": "false",
+                      "enable": true,
+                      "name": "available",
+                      "schema": {
+                        "type": "boolean",
+                        "default": false
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Imagem do produto a editar, a imagem pode ter o tamanho máximo de 2mb e os formatos válidos são png, jpeg, jpg e svg",
+                      "type": "file",
+                      "id": "GjJrjhbRRY",
+                      "example": "file://C:\\Users\\Caio_\\OneDrive\\Área de Trabalho\\pato.jpeg",
+                      "enable": true,
+                      "name": "file",
+                      "schema": {
+                        "type": "string",
+                        "format": "binary",
+                        "examples": [
+                          "arquivo.png"
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por editar um  produto, para efetuar a edição é pode-se informar \"name\", \"description\", \"price\", \"available\" e \"file\".",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 13,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28899772"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Update Product Drink",
+              "api": {
+                "id": "20043341",
+                "method": "post",
+                "path": "/api/products/drink/{id}/update",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28899555",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": false,
+                      "description": "Nome da bebida a editar",
+                      "type": "string",
+                      "id": "GKBkXAYzBc",
+                      "example": "Coca Cola",
+                      "enable": true,
+                      "name": "name",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "Coca Cola"
+                        ]
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Descrição da bebida a editar",
+                      "type": "string",
+                      "id": "0jGpqDPETr",
+                      "example": "2 litros",
+                      "enable": true,
+                      "name": "description",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "2 litros"
+                        ]
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Valor da bebida a editar",
+                      "type": "number",
+                      "id": "BzfuZb94BK",
+                      "example": "10",
+                      "enable": true,
+                      "name": "price",
+                      "schema": {
+                        "type": "number",
+                        "examples": [
+                          12.5
+                        ]
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Disponibilidade da bebida a editar",
+                      "type": "boolean",
+                      "id": "tW9DFRp8gl",
+                      "example": "false",
+                      "enable": true,
+                      "name": "available",
+                      "schema": {
+                        "type": "boolean",
+                        "default": false
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Imagem da bebida a editar, a imagem pode ter o tamanho máximo de 2mb e os formatos válidos são png, jpeg, jpg e svg",
+                      "type": "file",
+                      "id": "GjJrjhbRRY",
+                      "example": "file://C:\\Users\\Caio_\\OneDrive\\Área de Trabalho\\pato.jpeg",
+                      "enable": true,
+                      "name": "file",
+                      "schema": {
+                        "type": "string",
+                        "format": "binary",
+                        "examples": [
+                          "arquivo.png"
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por editar uma bebida, para efetuar a edição pode-se informar \"name\", \"description\", \"price\", \"available\" e \"file\".",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 14,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28899555"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Get Products",
+              "api": {
+                "id": "20043360",
+                "method": "get",
+                "path": "/api/products",
+                "parameters": {
+                  "path": [],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28899773",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/8621453"
+                      },
+                      "deprecated": true
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por retornar todos os produtos cadastrados",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 15,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28899773"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Get Products Drinks",
+              "api": {
+                "id": "20043404",
+                "method": "get",
+                "path": "/api/products",
+                "parameters": {
+                  "path": [],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28904086",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/8621453"
+                      },
+                      "deprecated": true
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por retornar todas as bebidas cadastradas cadastrados",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 32,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28904086"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Get Product",
+              "api": {
+                "id": "20066903",
+                "method": "get",
+                "path": "/api/products/{id}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28948767",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": [
+                        "01K2A456P8DYTZR2VPXWSVYFAE"
+                      ],
+                      "deprecated": true,
+                      "required": [],
+                      "x-apidog-refs": {
+                        "01K2A456P8DYTZR2VPXWSVYFAE": {
+                          "$ref": "#/definitions/8621453"
+                        }
+                      }
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por retornar um produto criado com base no ID passado",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 18,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28948767"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Get Product Drink",
+              "api": {
+                "id": "20066999",
+                "method": "get",
+                "path": "/api/products/drinks/{id}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28949827",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": [
+                        "01K2A456P8DYTZR2VPXWSVYFAE"
+                      ],
+                      "deprecated": true,
+                      "required": [],
+                      "x-apidog-refs": {
+                        "01K2A456P8DYTZR2VPXWSVYFAE": {
+                          "$ref": "#/definitions/8621453"
+                        }
+                      }
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por entregar uma bebida cadastrada com base no ID passado",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 19,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28949827"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Delete Product",
+              "api": {
+                "id": "20067087",
+                "method": "delete",
+                "path": "/api/products/{id}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28949865",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "deprecated": true,
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por deletar um produto cadastrado com base no ID passado",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 20,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28949865"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Delete Product Drink",
+              "api": {
+                "id": "20067089",
+                "method": "delete",
+                "path": "/api/products/{id}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28949866",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "deprecated": true,
+                      "x-apidog-refs": {},
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por deletar uma bebida cadastrada com base no ID passado",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 26,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28949866"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            }
+          ]
+        },
+        {
+          "name": "Stock",
+          "id": 4565044,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": "",
+              "fields": []
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "moduleId": 844489,
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "New Item",
+              "api": {
+                "id": "20067090",
+                "method": "post",
+                "path": "/api/stock",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28949867",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "Nome do item a cadastrar",
+                      "type": "string",
+                      "id": "GKBkXAYzBc",
+                      "example": "Alface",
+                      "enable": true,
+                      "name": "name",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "X-Bacon"
+                        ]
+                      }
+                    },
+                    {
+                      "required": true,
+                      "description": "Disponibilidade do item a cadastrar",
+                      "type": "boolean",
+                      "id": "0jGpqDPETr",
+                      "example": "true",
+                      "enable": true,
+                      "name": "available",
+                      "schema": {
+                        "type": "boolean"
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por fazer cadastro de novo item no estoque, para efetuar cadastro é necessário informar \"name\" e \"available\".",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 11,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28949867"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Update Item",
+              "api": {
+                "id": "20068326",
+                "method": "post",
+                "path": "/api/stock/{id}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28952486",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": false,
+                      "description": "Nome do item a cadastrar",
+                      "type": "string",
+                      "id": "GKBkXAYzBc",
+                      "example": "Alface",
+                      "enable": true,
+                      "name": "name",
+                      "schema": {
+                        "type": "string",
+                        "examples": [
+                          "X-Bacon"
+                        ]
+                      }
+                    },
+                    {
+                      "required": false,
+                      "description": "Disponibilidade do item a cadastrar",
+                      "type": "boolean",
+                      "id": "0jGpqDPETr",
+                      "example": "true",
+                      "enable": true,
+                      "name": "available",
+                      "schema": {
+                        "type": "boolean"
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por editar um item no estoque, para efetuar a edição pode-se informar \"name\" e \"available\".",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 28,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28952486"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Get Itens",
+              "api": {
+                "id": "20069987",
+                "method": "get",
+                "path": "/api/stock",
+                "parameters": {
+                  "path": [],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28958608",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apidog-orders": [
+                        "01K2ADE8XPYX9Y5E3M6XRHEVZ4"
+                      ],
+                      "deprecated": true,
+                      "required": [],
+                      "x-apidog-refs": {
+                        "01K2ADE8XPYX9Y5E3M6XRHEVZ4": {
+                          "$ref": "#/definitions/8630774"
+                        }
+                      }
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por retornar todos os itens do estoque cadastrados",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 16,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28958608"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Get Item",
+              "api": {
+                "id": "20069992",
+                "method": "get",
+                "path": "/api/stock/{id}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28950976",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {},
+                        "x-apidog-orders": [
+                          "01K2ADHWMYE9PHN51Q8H9Q44EG"
+                        ],
+                        "required": [],
+                        "x-apidog-refs": {
+                          "01K2ADHWMYE9PHN51Q8H9Q44EG": {
+                            "$ref": "#/definitions/8630774"
+                          }
+                        }
+                      },
+                      "deprecated": true
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por retornar item do estoque cadastrado com base no ID passado\n\n",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 22,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28950976"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Delete Item",
+              "api": {
+                "id": "20070000",
+                "method": "delete",
+                "path": "/api/stock/{id}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28950978",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "deprecated": true,
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por deletar um item cadastrado no estoque com base no ID passado",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 23,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28950978"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            }
+          ]
+        },
+        {
+          "name": "Ingredients",
+          "id": 4565045,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": "",
+              "fields": []
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "moduleId": 844489,
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "New Ingredients",
+              "api": {
+                "id": "20070443",
+                "method": "post",
+                "path": "/api/products/{product_id}/ingredients",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "product_id#0",
+                      "name": "product_id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28950980",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso",
+                          "x-apidog-mock": "{{$lorem.text}}"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "ID do ingrediente presenta na tabela ingredients",
+                      "type": "integer",
+                      "id": "GKBkXAYzBc",
+                      "example": "7",
+                      "enable": true,
+                      "name": "ingredient_id",
+                      "schema": {
+                        "type": "integer",
+                        "examples": [
+                          7
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por adicionar um novo ingrediente a um produto já existente.",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 19,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28950980"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Update Ingredients",
+              "api": {
+                "id": "20070152",
+                "method": "post",
+                "path": "api/products/{product_id}/ingredients/{ingredient_id}/update",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "product_id#0",
+                      "name": "product_id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    },
+                    {
+                      "id": "ingredient_id#0",
+                      "name": "ingredient_id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28950831",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso",
+                          "x-apidog-mock": "{{$lorem.text}}"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "ID do ingrediente presenta na tabela ingredients",
+                      "type": "integer",
+                      "id": "GKBkXAYzBc",
+                      "example": "7",
+                      "enable": true,
+                      "name": "ingredient_id",
+                      "schema": {
+                        "type": "integer",
+                        "examples": [
+                          7
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por editar um ingrediente de um produto.",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 13,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28950831"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Get Ingredients",
+              "api": {
+                "id": "20072028",
+                "method": "get",
+                "path": "/api/products/{product_id}/ingredients",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "product_id#0",
+                      "name": "product_id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28962400",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "ingredients": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "description": "ID",
+                                "x-apidog-mock": "{{$string.numeric}}"
+                              },
+                              "product_id": {
+                                "type": "integer",
+                                "description": "ID do produto",
+                                "x-apidog-mock": "{{$string.numeric}}"
+                              },
+                              "ingredient_id": {
+                                "type": "integer",
+                                "description": "ID Ingrediente",
+                                "x-apidog-mock": "{{$string.numeric}}"
+                              },
+                              "ingredient_name": {
+                                "type": "string",
+                                "description": "Nome do ingrediente ",
+                                "x-apidog-mock": "{{$lorem.text}}"
+                              },
+                              "ingredient_available": {
+                                "type": "string",
+                                "description": "Disponibilidade do ingrediente",
+                                "x-apidog-mock": "{{$datatype.boolean}}"
+                              }
+                            },
+                            "x-apidog-orders": [
+                              "id",
+                              "product_id",
+                              "ingredient_id",
+                              "ingredient_name",
+                              "ingredient_available"
+                            ],
+                            "required": [
+                              "id",
+                              "product_id",
+                              "ingredient_id",
+                              "ingredient_available",
+                              "ingredient_name"
+                            ]
+                          }
+                        },
+                        "products": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "description": "ID do produto",
+                              "x-apidog-mock": "{{$string.numeric}}"
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "Nome do produto",
+                              "x-apidog-mock": "{{$lorem.text}}"
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "description": "Data da atualização do produto",
+                              "x-apidog-mock": "{{$date.anytime}}"
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "description": "Data da criação do produto",
+                              "x-apidog-mock": "{{$date.anytime}}"
+                            },
+                            "path": {
+                              "type": "string",
+                              "description": "Caminho da imagem do produto",
+                              "x-apidog-mock": "{{$image.url}}"
+                            },
+                            "price": {
+                              "type": "number",
+                              "description": "Preço do produto",
+                              "x-apidog-mock": "{{$datatype.boolean}}"
+                            },
+                            "available": {
+                              "type": "boolean",
+                              "description": "Disponibilidade do produto",
+                              "x-apidog-mock": "{{$number.float}}"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "Descrição do produto",
+                              "x-apidog-mock": "{{$lorem.paragraph}}"
+                            }
+                          },
+                          "x-apidog-orders": [
+                            "id",
+                            "name",
+                            "description",
+                            "available",
+                            "price",
+                            "path",
+                            "created_at",
+                            "updated_at"
+                          ],
+                          "required": [
+                            "id",
+                            "name",
+                            "description",
+                            "available",
+                            "price",
+                            "path",
+                            "created_at",
+                            "updated_at"
+                          ],
+                          "x-apidog-refs": {}
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "products",
+                        "ingredients"
+                      ],
+                      "required": [
+                        "ingredients",
+                        "products"
+                      ],
+                      "x-apidog-refs": {}
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "multipart/form-data",
+                  "parameters": [
+                    {
+                      "required": true,
+                      "description": "ID do ingrediente presenta na tabela ingredients",
+                      "type": "integer",
+                      "id": "GKBkXAYzBc",
+                      "example": "7",
+                      "enable": true,
+                      "name": "ingredient_id",
+                      "schema": {
+                        "type": "integer",
+                        "examples": [
+                          7
+                        ]
+                      }
+                    }
+                  ],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por adicionar um novo ingrediente a um produto já existente.",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 25,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28962400"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "Delete Ingredients",
+              "api": {
+                "id": "20072158",
+                "method": "delete",
+                "path": "api/products/{product_id}/ingredients/{ingredient_id}/delete",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "product_id#0",
+                      "name": "product_id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    },
+                    {
+                      "id": "ingredient_id#0",
+                      "name": "ingredient_id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": true,
+                      "description": "Identifica formato dos dados",
+                      "type": "string",
+                      "id": "XkV5i5LAnM",
+                      "example": "application/json",
+                      "enable": true,
+                      "name": "Accept"
+                    },
+                    {
+                      "required": true,
+                      "description": "Chave da API",
+                      "type": "string",
+                      "id": "4c9IINo5zf",
+                      "example": "SenhaDaAPI",
+                      "enable": true,
+                      "name": "x-api-key"
+                    },
+                    {
+                      "required": true,
+                      "description": "Token de acesso",
+                      "type": "string",
+                      "id": "B0xyV8gWcG",
+                      "example": "{{$string.uuid}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "28962401",
+                    "code": 200,
+                    "name": "Success",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Resposta de sucesso",
+                          "x-apidog-mock": "{{$lorem.text}}"
+                        }
+                      },
+                      "x-apidog-orders": [
+                        "message"
+                      ],
+                      "required": [
+                        "message"
+                      ]
+                    },
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": "",
+                    "oasExtensions": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "Rota responsável por deletar um ingrediente de um produto.",
+                "tags": [],
+                "status": "released",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 16,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [
+                  "BLANK.28962401"
+                ],
+                "visibility": "INHERITED",
+                "moduleId": 844489,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "socketCollection": [],
+  "docCollection": [],
+  "webSocketCollection": [],
+  "socketIOCollection": [],
+  "responseCollection": [
+    {
+      "_databaseId": 1072560,
+      "updatedAt": "2025-08-06T19:17:51.000Z",
+      "name": "Root",
+      "type": "root",
+      "children": [],
+      "moduleId": 844489,
+      "parentId": 0,
+      "id": 1072560,
+      "ordering": [],
+      "items": []
+    }
+  ],
+  "schemaCollection": [
+    {
+      "id": 2406404,
+      "name": "Root",
+      "visibility": "SHARED",
+      "moduleId": 844489,
+      "items": [
+        {
+          "name": "Product / Drink",
+          "displayName": "",
+          "id": "#/definitions/8621453",
+          "description": "",
+          "schema": {
+            "jsonSchema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "ID do produto / bebida",
+                  "x-apidog-mock": "{{$string.numeric}}"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Nome do produto / bebida",
+                  "x-apidog-mock": "{{$lorem.text}}"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "description": "Data da atualização do produto / bebida",
+                  "x-apidog-mock": "{{$date.anytime}}"
+                },
+                "created_at": {
+                  "type": "string",
+                  "description": "Data da criação do produto / bebida",
+                  "x-apidog-mock": "{{$date.anytime}}"
+                },
+                "path": {
+                  "type": "string",
+                  "description": "Caminho da imagem do produto / bebida",
+                  "x-apidog-mock": "{{$image.url}}"
+                },
+                "price": {
+                  "type": "number",
+                  "description": "Preço do produto / bebida",
+                  "x-apidog-mock": "{{$datatype.boolean}}"
+                },
+                "available": {
+                  "type": "boolean",
+                  "description": "Disponibilidade do produto / bebida",
+                  "x-apidog-mock": "{{$number.float}}"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Descrição do produto / bebida",
+                  "x-apidog-mock": "{{$lorem.paragraph}}"
+                }
+              },
+              "x-apidog-orders": [
+                "id",
+                "name",
+                "description",
+                "available",
+                "price",
+                "path",
+                "created_at",
+                "updated_at"
+              ],
+              "required": [
+                "id",
+                "name",
+                "description",
+                "available",
+                "price",
+                "path",
+                "created_at",
+                "updated_at"
+              ]
+            }
+          },
+          "visibility": "INHERITED",
+          "moduleId": 844489
+        },
+        {
+          "name": "Stock",
+          "displayName": "",
+          "id": "#/definitions/8630774",
+          "description": "",
+          "schema": {
+            "jsonSchema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "ID do item do estoque",
+                  "x-apidog-mock": "{{$string.numeric}}"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Nome do produto / bebida",
+                  "x-apidog-mock": "{{$lorem.text}}"
+                },
+                "available": {
+                  "type": "boolean",
+                  "x-apidog-mock": "{{$datatype.boolean}}",
+                  "description": "Disponibilidade do item do estoque"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "x-apidog-mock": "{{$date.anytime}}",
+                  "description": "Data da atualização do item do estoque"
+                },
+                "created_at": {
+                  "type": "string",
+                  "x-apidog-mock": "{{$date.anytime}}",
+                  "description": "Data da criação do item do estoque"
+                }
+              },
+              "x-apidog-orders": [
+                "id",
+                "name",
+                "available",
+                "created_at",
+                "updated_at"
+              ],
+              "required": [
+                "id",
+                "name",
+                "available",
+                "updated_at",
+                "created_at"
+              ]
+            }
+          },
+          "visibility": "INHERITED",
+          "moduleId": 844489
+        }
+      ]
+    }
+  ],
+  "securitySchemeCollection": [
+    {
+      "id": 677314,
+      "name": "Root",
+      "items": [],
+      "ordering": []
+    }
+  ],
+  "requestCollection": [
+    {
+      "name": "Root",
+      "children": [],
+      "ordering": [
+        "requestFolder.7453673"
+      ],
+      "items": []
+    }
+  ],
+  "apiTestCaseCollection": [
+    {
+      "name": "Root",
+      "children": [],
+      "items": []
+    }
+  ],
+  "testCaseReferences": [],
+  "environments": [],
+  "commonScripts": [],
+  "databaseConnections": [],
+  "globalVariables": [],
+  "moduleVariables": [
+    {
+      "id": "844489",
+      "variables": []
+    }
+  ],
+  "commonParameters": null,
+  "projectSetting": {
+    "id": "1029352",
+    "auth": {},
+    "securityScheme": {},
+    "gateway": [],
+    "language": "pt-PT",
+    "apiStatuses": [
+      "developing",
+      "testing",
+      "released",
+      "deprecated"
+    ],
+    "mockSettings": {},
+    "preProcessors": [],
+    "postProcessors": [],
+    "advancedSettings": {
+      "enableJsonc": false,
+      "enableBigint": false,
+      "responseValidate": true,
+      "enableTestScenarioSetting": false,
+      "enableYAPICompatScript": false,
+      "isDefaultUrlEncoding": 3,
+      "publishedDocUrlRules": {
+        "defaultRule": "SLUGIFY_WITH_RESOURCE_KEY",
+        "resourceKeyStandard": "NEW"
+      },
+      "folderShareExpandModeSettings": {
+        "expandId": [],
+        "mode": "AUTO"
+      }
+    },
+    "initialDisabledMockIds": [],
+    "servers": [
+      {
+        "id": "default",
+        "name": "Servidor Padrão"
+      }
+    ],
+    "cloudMock": {
+      "security": "free",
+      "enable": false,
+      "tokenKey": "apidogToken"
+    }
+  },
+  "customFunctions": [],
+  "projectTestCaseCategories": [],
+  "projectAssociations": []
+}

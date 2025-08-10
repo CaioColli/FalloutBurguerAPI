@@ -1,0 +1,1673 @@
+{
+    "info": {
+        "name": "FalloutBurguer",
+        "description": "",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "User",
+            "description": "",
+            "item": [
+                {
+                    "name": "Cadaster",
+                    "description": "Rota responsável por fazer cadastro de usuário, para efetuar cadastro é necessário  informar \"name\", \"email\", \"password\" e \"password_confirmation\". Foi definido que a senha devo conter no mínimo 8 caracteres, 1 letra e 1 símbolo.",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "NomeUsuário",
+                                    "description": "Nome do usuário a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "usuario@email.com",
+                                    "description": "E-mail do usuário a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "123user!",
+                                    "description": "Senha do usuário a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "password_confirmation",
+                                    "value": "123user!",
+                                    "description": "Confirmação de senha do usuário a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/register",
+                            "path": [
+                                "api",
+                                "auth",
+                                "register"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Login",
+                    "description": "Rota responsável por fazer login de usuário, para efetuar login é necessário  informar \"email\" e \"password\".",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "email",
+                                    "value": "usuario@email.com",
+                                    "description": "E-mail do usuário a efetuar login",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "123user!",
+                                    "description": "Senha do usuário a efetuar login",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "path": [
+                                "api",
+                                "auth",
+                                "login"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Logout",
+                    "description": "Rota responsável por fazer logout de usuário, o logout é feito com base no token de Authorization do usuário autenticado.",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/logout",
+                            "path": [
+                                "api",
+                                "auth",
+                                "logout"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Forgot Password",
+                    "description": "Rota responsável por fazer o pedido de reset de senha do usuário, para efetuar a mudança de senha é necessário  informar \"email\".",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "email",
+                                    "value": "usuario@email.com",
+                                    "description": "E-mail do usuário a efetuar troca de senha",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "path": [
+                                "api",
+                                "auth",
+                                "login"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Reset Password",
+                    "description": "Rota responsável por fazer cadastro de usuário, para efetuar cadastro é necessário  informar \"name\", \"email\", \"password\" e \"password_confirmation\". Foi definido que a senha devo conter no mínimo 8 caracteres, 1 letra e 1 símbolo.",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "token",
+                                    "value": "{{$string.uuid}}",
+                                    "description": "Token de reset enviado no e-mail do usuário cadastrado",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "usuario@email.com",
+                                    "description": "E-mail do usuário cadastrado",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "123user!",
+                                    "description": "Nova senha do usuário cadastrado",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "password_confirmation",
+                                    "value": "123user!",
+                                    "description": "Confirmação de nova senha do usuário cadastrado",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/register",
+                            "path": [
+                                "api",
+                                "auth",
+                                "register"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                }
+            ],
+            "auth": {}
+        },
+        {
+            "name": "Products",
+            "description": "",
+            "item": [
+                {
+                    "name": "New Product",
+                    "description": "Rota responsável por fazer cadastro de novo produto, para efetuar cadastro é necessário informar \"name\", \"description\", \"price\", \"file\" e \"ingredient_id\".",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "X-Bacon",
+                                    "description": "Nome do produto a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Com bacon",
+                                    "description": "Descrição do produto a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "12.5",
+                                    "description": "Valor do produto a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "file",
+                                    "value": "file://C:\\Users\\Caio_\\OneDrive\\Área de Trabalho\\pato.jpeg",
+                                    "description": "Imagem do produto a cadastrar, a imagem pode ter o tamanho máximo de 2mb e os formatos válidos são png, jpeg, jpg e svg",
+                                    "type": "file",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "ingredient_id",
+                                    "value": [
+                                        "1",
+                                        "1"
+                                    ],
+                                    "description": "IDs dos ingredientes cadastrados",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products",
+                            "path": [
+                                "api",
+                                "products"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "New Product Drink",
+                    "description": "Rota responsável por fazer cadastro de uma nova bebida, para efetuar cadastro é necessário informar \"name\", \"description\", \"file\".",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "Coca Cola",
+                                    "description": "Nome da bebida a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "2 litros",
+                                    "description": "Descrição da bebida a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "10",
+                                    "description": "Valor da bebida a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "file",
+                                    "value": "file://C:\\Users\\Caio_\\OneDrive\\Área de Trabalho\\pato.jpeg",
+                                    "description": "Imagem da bebida a cadastrar, a imagem pode ter o tamanho máximo de 2mb e os formatos válidos são png, jpeg, jpg e svg",
+                                    "type": "file",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/drinks",
+                            "path": [
+                                "api",
+                                "products",
+                                "drinks"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Update Product",
+                    "description": "Rota responsável por editar um  produto, para efetuar a edição é pode-se informar \"name\", \"description\", \"price\", \"available\" e \"file\".",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "X-Bacon",
+                                    "description": "Nome do produto a editar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Com bacon",
+                                    "description": "Descrição do produto a editar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "12.5",
+                                    "description": "Valor do produto a editar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "available",
+                                    "value": "false",
+                                    "description": "Disponibilidade do produto a editar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "file",
+                                    "value": "file://C:\\Users\\Caio_\\OneDrive\\Área de Trabalho\\pato.jpeg",
+                                    "description": "Imagem do produto a editar, a imagem pode ter o tamanho máximo de 2mb e os formatos válidos são png, jpeg, jpg e svg",
+                                    "type": "file",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/:id/update",
+                            "path": [
+                                "api",
+                                "products",
+                                ":id",
+                                "update"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Update Product Drink",
+                    "description": "Rota responsável por editar uma bebida, para efetuar a edição pode-se informar \"name\", \"description\", \"price\", \"available\" e \"file\".",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "Coca Cola",
+                                    "description": "Nome da bebida a editar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "2 litros",
+                                    "description": "Descrição da bebida a editar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "10",
+                                    "description": "Valor da bebida a editar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "available",
+                                    "value": "false",
+                                    "description": "Disponibilidade da bebida a editar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "file",
+                                    "value": "file://C:\\Users\\Caio_\\OneDrive\\Área de Trabalho\\pato.jpeg",
+                                    "description": "Imagem da bebida a editar, a imagem pode ter o tamanho máximo de 2mb e os formatos válidos são png, jpeg, jpg e svg",
+                                    "type": "file",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/drink/:id/update",
+                            "path": [
+                                "api",
+                                "products",
+                                "drink",
+                                ":id",
+                                "update"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Get Products",
+                    "description": "Rota responsável por retornar todos os produtos cadastrados",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "GET",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products",
+                            "path": [
+                                "api",
+                                "products"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Get Products Drinks",
+                    "description": "Rota responsável por retornar todas as bebidas cadastradas cadastrados",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "GET",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products",
+                            "path": [
+                                "api",
+                                "products"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Get Product",
+                    "description": "Rota responsável por retornar um produto criado com base no ID passado",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "GET",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/:id",
+                            "path": [
+                                "api",
+                                "products",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Get Product Drink",
+                    "description": "Rota responsável por entregar uma bebida cadastrada com base no ID passado",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "GET",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/drinks/:id",
+                            "path": [
+                                "api",
+                                "products",
+                                "drinks",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Delete Product",
+                    "description": "Rota responsável por deletar um produto cadastrado com base no ID passado",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "DELETE",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/:id",
+                            "path": [
+                                "api",
+                                "products",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Delete Product Drink",
+                    "description": "Rota responsável por deletar uma bebida cadastrada com base no ID passado",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "DELETE",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/:id",
+                            "path": [
+                                "api",
+                                "products",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                }
+            ],
+            "auth": {}
+        },
+        {
+            "name": "Stock",
+            "description": "",
+            "item": [
+                {
+                    "name": "New Item",
+                    "description": "Rota responsável por fazer cadastro de novo item no estoque, para efetuar cadastro é necessário informar \"name\" e \"available\".",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "Alface",
+                                    "description": "Nome do item a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "available",
+                                    "value": "true",
+                                    "description": "Disponibilidade do item a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/stock",
+                            "path": [
+                                "api",
+                                "stock"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Update Item",
+                    "description": "Rota responsável por editar um item no estoque, para efetuar a edição pode-se informar \"name\" e \"available\".",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "Alface",
+                                    "description": "Nome do item a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "available",
+                                    "value": "true",
+                                    "description": "Disponibilidade do item a cadastrar",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/stock/:id",
+                            "path": [
+                                "api",
+                                "stock",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Get Itens",
+                    "description": "Rota responsável por retornar todos os itens do estoque cadastrados",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "GET",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/stock",
+                            "path": [
+                                "api",
+                                "stock"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Get Item",
+                    "description": "Rota responsável por retornar item do estoque cadastrado com base no ID passado\n\n",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "GET",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/stock/:id",
+                            "path": [
+                                "api",
+                                "stock",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Delete Item",
+                    "description": "Rota responsável por deletar um item cadastrado no estoque com base no ID passado",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "DELETE",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/stock/:id",
+                            "path": [
+                                "api",
+                                "stock",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                }
+            ],
+            "auth": {}
+        },
+        {
+            "name": "Ingredients",
+            "description": "",
+            "item": [
+                {
+                    "name": "New Ingredients",
+                    "description": "Rota responsável por adicionar um novo ingrediente a um produto já existente.",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "ingredient_id",
+                                    "value": "7",
+                                    "description": "ID do ingrediente presenta na tabela ingredients",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/:product_id/ingredients",
+                            "path": [
+                                "api",
+                                "products",
+                                ":product_id",
+                                "ingredients"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "product_id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Update Ingredients",
+                    "description": "Rota responsável por editar um ingrediente de um produto.",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "ingredient_id",
+                                    "value": "7",
+                                    "description": "ID do ingrediente presenta na tabela ingredients",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "api/products/:product_id/ingredients/:ingredient_id/update",
+                            "path": [
+                                "api",
+                                "products",
+                                ":product_id",
+                                "ingredients",
+                                ":ingredient_id",
+                                "update"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "product_id",
+                                    "description": "",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "ingredient_id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Get Ingredients",
+                    "description": "Rota responsável por adicionar um novo ingrediente a um produto já existente.",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "GET",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "ingredient_id",
+                                    "value": "7",
+                                    "description": "ID do ingrediente presenta na tabela ingredients",
+                                    "type": "text",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/products/:product_id/ingredients",
+                            "path": [
+                                "api",
+                                "products",
+                                ":product_id",
+                                "ingredients"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "product_id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                },
+                {
+                    "name": "Delete Ingredients",
+                    "description": "Rota responsável por deletar um ingrediente de um produto.",
+                    "event": [],
+                    "auth": {},
+                    "request": {
+                        "auth": {},
+                        "method": "DELETE",
+                        "body": {},
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "Identifica formato dos dados",
+                                "type": "string"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "SenhaDaAPI",
+                                "description": "Chave da API",
+                                "type": "string"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{$string.uuid}}",
+                                "description": "Token de acesso",
+                                "type": "string"
+                            }
+                        ],
+                        "url": {
+                            "raw": "api/products/:product_id/ingredients/:ingredient_id/delete",
+                            "path": [
+                                "api",
+                                "products",
+                                ":product_id",
+                                "ingredients",
+                                ":ingredient_id",
+                                "delete"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "product_id",
+                                    "description": "",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "ingredient_id",
+                                    "description": "",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "protocolProfileBehavior": {
+                        "strictSSL": false,
+                        "followRedirects": true
+                    }
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                }
+            ],
+            "auth": {}
+        }
+    ],
+    "variable": [],
+    "event": [],
+    "auth": {}
+}
