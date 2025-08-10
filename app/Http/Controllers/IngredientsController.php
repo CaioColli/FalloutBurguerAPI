@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreIngredients;
 use App\Http\Requests\UpdateIngredients;
 use App\Models\Ingredients;
 use App\Models\Products;
 use App\Models\Stock;
-use Illuminate\Http\Request;
 
 class IngredientsController extends Controller
 {
-    private function validateIngredient($id) {
+    private function validateIngredient($id)
+    {
         abort(Response()->json([
             'message' => 'Não há nenhum produto com ID ' . $id
         ])->setStatusCode(404));
@@ -37,9 +38,25 @@ class IngredientsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreIngredients $request, string $id)
     {
-        //
+        $ingredient = Stock::where('id', $request->ingredient_id)->first();
+        $ingredientName = $ingredient->name;
+
+        if (!$ingredient) {
+            return Response()->json([
+                'message' => 'Não há nenhum ingrediente com ID ' . $request->ingredient_id
+            ])->setStatusCode(404);
+        }
+
+        Ingredients::create([
+            'product_id' => $id,
+            'ingredient_id' => $request->ingredient_id
+        ]);
+
+        return Response()->json([
+            'message' =>  $ingredientName . ' cadastrado com sucesso'
+        ]);
     }
 
     /**
@@ -58,8 +75,9 @@ class IngredientsController extends Controller
             ->select(
                 'ingredients.id',
                 'ingredients.product_id',
-                'stock.name',
-                'stock.available'
+                'stock.id as ingredient_id',
+                'stock.name as ingredient_name',
+                'stock.available as ingredient_available'
             )
             ->get();
 
