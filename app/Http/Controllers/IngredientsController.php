@@ -104,8 +104,10 @@ class IngredientsController extends Controller
                 ])->setStatusCode(200);
             }
 
+            DB::commit();
+
             return Response()->json([
-                'message' => 'Ingrediente atualizado com sucesso',
+                'message' => 'O Ingrediente do produto ' . $nameProduct . ' foi atualizado com sucesso',
             ])->setStatusCode(200);
         } catch (\Exception $e) {
             DB::rollBack();
